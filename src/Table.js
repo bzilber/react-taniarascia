@@ -17,6 +17,7 @@ const TableHeader = () => {
         <tr key = {index}>
           <td>{row.name}</td>
           <td>{row.index}</td>
+          <td> <button onClick={()=> props.removeCharacter(index)}>Delete</button></td>
         </tr>
       )
     })
@@ -24,17 +25,19 @@ const TableHeader = () => {
     return <tbody>{rows}</tbody>
   }
 
-  class Table extends Component {
-    render() {
-        const {characterData} = this.props
+  const Table = (props) => {
+
+        const {characterData, removeCharacter} = props //2 no this here, why?
 
       return (
         <table>
           <TableHeader />
-          <TableBody characterData ={characterData} />
+          <TableBody characterData ={characterData} removeCharacter = {removeCharacter} />
         </table>
       )
-    }
   }
   
+  
   export default Table
+
+  //2 https://stackoverflow.com/questions/38060523/what-is-the-difference-between-using-this-props-and-props-in-react-js

@@ -26,10 +26,9 @@ class App extends Component {
 
   removeCharacter = (index) => {
     const {characters} = this.state
-
     this.setState({
-      characters: characters.filter((character,i) => {
-        return i != index
+      characters: characters.filter((character,i) => { //1
+        return i !== index 
       }),
     })
   }
@@ -39,10 +38,13 @@ class App extends Component {
 
         return (
             <div className="container">
-                <Table characterData = {characters} removeCharacter={this.removeCharacter} />
+                <Table characterData={characters} removeCharacter={this.removeCharacter} />
             </div>
         )
     }
 }
 
 export default App
+
+
+//1: https://stackoverflow.com/questions/418799 what-does-colon-do-in-javascript , so setState.chars = chars.filter()`
